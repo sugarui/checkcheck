@@ -37,6 +37,7 @@ var sites = ['aladin','ridibooks','userstorybook'];
 for (var i = 0 ; i < sites.length; i++) {
 	var checkbox = document.createElement('input');
 	checkbox.setAttribute('type','checkbox');
+	checkbox.setAttribute('name','sites_set');
 	checkbox.setAttribute('value',sites[i]);
 	
 	var label = document.createElement('span');
@@ -61,9 +62,14 @@ button_find.addEventListener('click', function(){
 	var url_aladin = 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+querynameurl;
 	var url_ridi = 'http://ridibooks.com/search/?q='+queryname;
 	var url_usb = 'http://userstorybook.net/books/?keyword='+queryname;
-	window.open(url_aladin);
-	window.open(url_ridi);
-	window.open(url_usb);
+	
+	var sites_set = document.getElementsByName('sites_set')
+	for (var i = 0 ; i < sites_set.length; i++) {
+		if (sites_set[i].checked){
+			alert(sites_set[i].value);
+		}	
+	}
+	
 	document.getElementsByTagName('body')[0].removeChild(frame);
 });
 
