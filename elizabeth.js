@@ -28,11 +28,25 @@ button_close.setAttribute('type','button');
 button_close.setAttribute('value','닫기');
 button_close.style.margin = '0 20px 0 0';
 
-
 frame.appendChild(guide);
 frame.appendChild(input_box);
 frame.appendChild(button_find);
 frame.appendChild(button_close);
+
+var sites = ['aladin','ridibooks','userstorybook'];
+for (var i = 0 ; i < sites.length; i++) {
+	var checkbox = document.createElement('input');
+	checkbox.setAttribute('type','checkbox');
+	checkbox.setAttribute('value',sites[i]);
+	
+	var label = document.createElement('span');
+	label.innerHTML = sites[i];
+	label.style.margin = '0 10px 0 0';
+	label.style.color = '#aaa';
+
+	frame.appendChild(checkbox);
+	frame.appendChild(label);
+};
 
 button_find.addEventListener('click', function(){
 
@@ -56,21 +70,6 @@ button_find.addEventListener('click', function(){
 button_close.addEventListener('click', function(){
 	document.getElementsByTagName('body')[0].removeChild(frame);
 });
-
-var sites = ['aladin','ridibooks','userstorybook'];
-for (var i = 0 ; i < sites.length; i++) {
-	var checkbox = document.createElement('input');
-	checkbox.setAttribute('type','checkbox');
-	checkbox.setAttribute('value',sites[i]);
-	
-	var label = document.createElement('span');
-	label.innerHTML = sites[i];
-	label.style.margin = '0 10px 0 0';
-	label.style.color = '#aaa';
-
-	frame.appendChild(checkbox);
-	frame.appendChild(label);
-};
 
 document.getElementsByTagName('body')[0].appendChild(frame);
 
