@@ -4,11 +4,11 @@ frame.style.zIndex = 999999;
 frame.style.top = '0px';
 frame.style.right = '0px';
 frame.style.position = 'fixed';
-frame.style.width = '400px';
+frame.style.width = '600px';
 frame.style.padding = '10px';
 frame.style.background = '#f0f0f0';
 
-var guide = document.createElement('p');
+var guide = document.createElement('span');
 guide.innerHTML = '제목이나 저자';
 guide.style.margin ='0 6px 0 0';
 
@@ -21,15 +21,45 @@ input_box.style.margin = '0 6px 0 0';
 var button_find = document.createElement('input');
 button_find.setAttribute('type','button');
 button_find.setAttribute('value','찾아줘');
+button_find.style.margin = '0 6px 0 0';
 
 var button_close = document.createElement('input');
 button_close.setAttribute('type','button');
 button_close.setAttribute('value','닫기');
+button_close.style.margin = '0 20px 0 0';
+
+
+var check_box_aladin = document.createElement('input');
+check_box_aladin.setAttribute('type','checkbox');
+check_box_aladin.setAttribute('value','aladin');
+var check_box_label_aladin = document.createElement('span');
+check_box_label_aladin.innerHTML = '알라딘';
+
+var check_box_ridi = document.createElement('input');
+check_box_ridi.setAttribute('type','checkbox');
+check_box_ridi.setAttribute('value','ridi');
+var check_box_label_ridi = document.createElement('span');
+check_box_label_ridi.innerHTML = '리디';
+
+var check_box_usb = document.createElement('input');
+check_box_usb.setAttribute('type','checkbox');
+check_box_usb.setAttribute('value','usb');
+var check_box_label_usb = document.createElement('span');
+check_box_label_usb.innerHTML = '유북';
+
 
 frame.appendChild(guide);
 frame.appendChild(input_box);
 frame.appendChild(button_find);
 frame.appendChild(button_close);
+
+frame.appendChild(check_box_aladin);
+frame.appendChild(check_box_label_aladin);
+frame.appendChild(check_box_ridi);
+frame.appendChild(check_box_label_ridi);
+frame.appendChild(check_box_usb);
+frame.appendChild(check_box_label_usb);
+
 
 button_find.addEventListener('click', function(){
 
