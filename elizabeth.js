@@ -55,6 +55,7 @@ button_close.setAttribute('value','닫기');
 button_close.style.float = 'right';
 button_close.style.margin = '0 0 0 30px';
 button_close.style.color = "#aaa";
+button_close.style.verticalAlign = "middle";
 
 frame_inner.appendChild(guide);
 frame_inner.appendChild(input_box);
