@@ -52,7 +52,6 @@ button_find.style.margin = '0 6px 0 0';
 var button_close = document.createElement('input');
 button_close.setAttribute('type','button');
 button_close.setAttribute('value','닫기');
-button_close.style.float = 'right';
 button_close.style.margin = '0 0 0 30px';
 button_close.style.color = "#aaa";
 button_close.style.verticalAlign = "middle";
@@ -60,7 +59,7 @@ button_close.style.verticalAlign = "middle";
 frame_inner.appendChild(guide);
 frame_inner.appendChild(input_box);
 frame_inner.appendChild(button_find);
-frame.appendChild(button_close);
+frame_inner.appendChild(button_close);
 
 button_find.addEventListener('click', function_find);
 button_close.addEventListener('click', function_frame_remove);
