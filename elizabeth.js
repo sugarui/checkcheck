@@ -40,7 +40,7 @@ guide.style.fontWeight = 'bold';
 
 var input_box = document.createElement('input');
 input_box.setAttribute('type','text');
-input_box.setAttribute('size','15');
+input_box.setAttribute('autofocus','autofocus');
 input_box.id = 'inp';
 input_box.style.margin = '0 6px 0 0';
 
