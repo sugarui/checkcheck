@@ -13,6 +13,10 @@ var frame_inner = document.createElement('div');
 frame_inner.style.float = 'left';
 frame.appendChild(frame_inner);
 
+if(window.getSelection){
+    var window_selection=window.getSelection();
+}
+
 var sites = ['aladin','ridibooks','userstorybook'];
 for (var i = 0 ; i < sites.length ; i++) {
 	var checkbox = document.createElement('input');
@@ -41,6 +45,7 @@ guide.style.fontWeight = 'bold';
 var input_box = document.createElement('input');
 input_box.setAttribute('type','text');
 input_box.setAttribute('autofocus','autofocus');
+input_box.setAttribute('value',window_selection);
 input_box.id = 'inp';
 input_box.style.margin = '0 6px 0 0';
 
