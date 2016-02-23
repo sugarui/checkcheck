@@ -51,7 +51,7 @@ input_box.style.margin = '0 6px 0 0';
 
 var button_find = document.createElement('input');
 button_find.setAttribute('type','button');
-button_find.setAttribute('value','찾아줘');
+button_find.setAttribute('value','찾아줘!');
 button_find.style.margin = '0 6px 0 0';
 
 var button_close = document.createElement('input');
@@ -61,10 +61,19 @@ button_close.style.margin = '0 0 0 30px';
 button_close.style.color = "#aaa";
 button_close.style.verticalAlign = "middle";
 
+var feedback = document.createElement('a');
+feedback.setAttribute('href','https://github.com/sugarui/checkcheck.js');
+feedback.setAttribute('target','_blank');
+feedback.innerHTML = 'ⓘ';
+feedback.style.margin = '0 0 0 10px';
+feedback.style.color = '#9cc0e6';
+feedback.style.fontWeight = 'bold';
+
 frame_inner.appendChild(guide);
 frame_inner.appendChild(input_box);
 frame_inner.appendChild(button_find);
 frame_inner.appendChild(button_close);
+frame_inner.appendChild(feedback);
 
 button_find.addEventListener('click', function_find);
 button_close.addEventListener('click', function_frame_remove);
