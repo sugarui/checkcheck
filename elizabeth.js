@@ -54,6 +54,8 @@ button_find.addEventListener('click', function_find);
 
 button_close.addEventListener('click', function_frame_remove);
 
+frame.addEventListener('keydown', function_find_by_keyboard);
+
 function function_frame_remove() {
 	document.getElementsByTagName('body')[0].removeChild(frame);
 }
@@ -80,7 +82,13 @@ function function_find() {
 			window.open(urls[sites_set[i].value]);
 		}	
 	}
-	function_frame_remove()
+	function_frame_remove();
+}
+
+function function_find_by_keyboard(event){
+	if (event.keyCode == 13) {
+		function_find();
+	}
 }
 
 document.getElementsByTagName('body')[0].appendChild(frame);
