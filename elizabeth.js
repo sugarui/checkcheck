@@ -51,9 +51,7 @@ for (var i = 0 ; i < sites.length ; i++) {
 }
 
 button_find.addEventListener('click', function_find);
-
 button_close.addEventListener('click', function_frame_remove);
-
 frame.addEventListener('keydown', function_find_by_keyboard);
 
 function function_frame_remove() {
@@ -61,7 +59,6 @@ function function_frame_remove() {
 }
 
 function function_find() {
-
 	function urlEncode(str){
 	    str=escape(str);
 	    str=str.replace(new RegExp('\\+','g'),'%2B');
@@ -69,13 +66,11 @@ function function_find() {
 	}
 	var queryname = document.getElementById('inp').value;
 	var querynameurl = urlEncode(queryname);
-
 	var urls = {
 		'aladin' : 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+querynameurl,
 		'ridibooks' : 'http://ridibooks.com/search/?q='+queryname,
 		'userstorybook' : 'http://userstorybook.net/books/?keyword='+queryname
 	};
-
 	var sites_set = document.getElementsByName('sites_set');
 	for (var i = 0 ; i < sites_set.length ; i++) {
 		if (sites_set[i].checked){
