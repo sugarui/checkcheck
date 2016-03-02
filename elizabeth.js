@@ -77,9 +77,15 @@ frame_inner.appendChild(button_find);
 frame_inner.appendChild(button_close);
 frame_inner.appendChild(feedback);
 
+
+
+
 button_find.addEventListener('click', function_find);
 button_close.addEventListener('click', function_frame_remove);
 frame.addEventListener('keydown', function_by_keyboard);
+
+
+
 
 function function_frame_remove() {
 	document.getElementsByTagName('body')[0].removeChild(frame);
@@ -108,7 +114,7 @@ function function_find() {
 		}
 		function_frame_remove();
 	} else {
-		input_box.setAttribute('value','검색어를 입력해주세요')
+		input_box.setAttribute('value','검색어를 입력해주세요');
 	}
 }
 
@@ -119,6 +125,9 @@ function function_by_keyboard(event){
 		function_frame_remove();
 	}
 }
+
+
+
 
 if( ! document.getElementById('checkcheckframe') ){
 	document.getElementsByTagName('body')[0].appendChild(frame);
