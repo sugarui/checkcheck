@@ -6,8 +6,10 @@ frame.style.right = '3px';
 frame.style.position = 'fixed';
 frame.style.padding = '10px 17px';
 frame.style.background = '#d9e8f8';
-frame.style.border = '1px solid #cadef3';
+frame.style.border = '1px solid #bed2e6';
 frame.style.borderRadius = "3px";
+frame.style.boxShadow = '0px 1px 3px #ccd1d6';
+frame.setAttribute('id', 'checkcheckframe');
 
 var frame_inner = document.createElement('div');
 frame_inner.style.float = 'left';
@@ -113,4 +115,8 @@ function function_by_keyboard(event){
 	}
 }
 
-document.getElementsByTagName('body')[0].appendChild(frame);
+if( ! document.getElementById('checkcheckframe') ){
+	document.getElementsByTagName('body')[0].appendChild(frame);
+} else {
+	alert ('이미 책첵을 켰어요! 화면 우측 상단을 보세요 ↗↗');
+}
