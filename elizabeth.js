@@ -99,12 +99,17 @@ function function_find() {
 		'userstorybook' : 'http://userstorybook.net/books/?keyword='+queryname
 	};
 	var sites_set = document.getElementsByName('sites_set');
-	for (var i = 0 ; i < sites_set.length ; i++) {
-		if (sites_set[i].checked){
-			window.open(urls[sites_set[i].value]);
-		}	
+	
+	if (queryname && queryname!='검색어를 입력해주세요') {
+		for (var i = 0 ; i < sites_set.length ; i++) {
+			if (sites_set[i].checked){
+				window.open(urls[sites_set[i].value]);
+			}	
+		}
+		function_frame_remove();
+	} else {
+		input_box.setAttribute('value','검색어를 입력해주세요')
 	}
-	function_frame_remove();
 }
 
 function function_by_keyboard(event){
