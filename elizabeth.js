@@ -19,7 +19,7 @@ if(window.getSelection){
     var window_selection=window.getSelection();
 }
 
-var sites = ['aladin','ridibooks','userstorybook'];
+var sites = ['aladin','ridibooks'];
 for (var i = 0 ; i < sites.length ; i++) {
 	var checkbox = document.createElement('input');
 	checkbox.setAttribute('type','checkbox');
@@ -56,12 +56,12 @@ input_box.id = 'inp';
 input_box.style.margin = '0 6px 0 0';
 
 var button_find = document.createElement('input');
-button_find.setAttribute('type','button');
+button_find.setAttribute('type','submit');
 button_find.setAttribute('value','찾아줘!');
 button_find.style.margin = '0 6px 0 0';
 
 var button_close = document.createElement('input');
-button_close.setAttribute('type','submit');
+button_close.setAttribute('type','button');
 button_close.setAttribute('value','닫기');
 button_close.style.margin = '0 0 0 30px';
 button_close.style.color = "#aaa";
@@ -91,7 +91,7 @@ function function_frame_remove() {
 }
 
 function function_send_to_server() {
-	
+
 	document.charset = "utf-8";
 	var queryname_raw = document.getElementById('inp').value;
 
@@ -100,7 +100,7 @@ function function_send_to_server() {
     xhr.onreadystatechange = function(){    
 		if (xhr.readyState === 4 && xhr.status === 200) {
 		    var queryname = xhr.responseText;
-		    alert ('통신성공함 값을 받아왔다면 그값은['+queryname+']');
+		    alert ('통신성공함. 값을 받아왔다면 그값은['+queryname+']');
 		    function_find(queryname);
 		}
     };
@@ -117,6 +117,7 @@ function function_send_to_server() {
 		    str = str.replace(new RegExp('\\+','g'),'%2B');
 		    return str.replace(new RegExp('%20','g'),'+');
 		}
+		
 		var urls = {
 			'aladin' : 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+queryname_aladin,
 			'ridibooks' : 'http://ridibooks.com/search/?q='+queryname,
