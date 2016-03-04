@@ -61,7 +61,7 @@ button_find.setAttribute('value','찾아줘!');
 button_find.style.margin = '0 6px 0 0';
 
 var button_close = document.createElement('input');
-button_close.setAttribute('type','button');
+button_close.setAttribute('type','submit');
 button_close.setAttribute('value','닫기');
 button_close.style.margin = '0 0 0 30px';
 button_close.style.color = "#aaa";
@@ -94,7 +94,7 @@ function function_send_to_server() {
 	
 	document.charset = "utf-8";
 	var queryname_raw = document.getElementById('inp').value;
-	
+
 	var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://elecuchi.cafe24.com/program/checkcheck/responser.php');
     xhr.onreadystatechange = function(){    
