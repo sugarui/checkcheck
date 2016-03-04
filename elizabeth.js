@@ -38,9 +38,13 @@ for (var i = 0 ; i < sites.length ; i++) {
 	frame_inner.appendChild(label);
 }
 
+var form = document.createElement('form');
+form.style.margin = '10px 0 0 0';
+form.setAttribute('accept-charset','UTF-8');
+
 var guide = document.createElement('span');
 guide.innerHTML = '제목이나 저자';
-guide.style.margin = '0 8px 0 10px';
+guide.style.margin = '0 8px 0 0';
 guide.style.color = '#444';
 guide.style.fontWeight = 'bold';
 
@@ -71,63 +75,72 @@ feedback.style.margin = '0 0 0 10px';
 feedback.style.color = '#9cc0e6';
 feedback.style.fontWeight = 'bold';
 
-frame_inner.appendChild(guide);
-frame_inner.appendChild(input_box);
-frame_inner.appendChild(button_find);
-frame_inner.appendChild(button_close);
-frame_inner.appendChild(feedback);
+frame_inner.appendChild(form);
+form.appendChild(guide);
+form.appendChild(input_box);
+form.appendChild(button_find);
+form.appendChild(button_close);
+form.appendChild(feedback);
 
-
-
-
-button_find.addEventListener('click', function_find);
+button_find.addEventListener('click', function_send_to_server);
 button_close.addEventListener('click', function_frame_remove);
 frame.addEventListener('keydown', function_by_keyboard);
-
-
-
 
 function function_frame_remove() {
 	document.getElementsByTagName('body')[0].removeChild(frame);
 }
 
-function function_find() {
-	function urlEncode(str){
-	    str=escape(str);
-	    str=str.replace(new RegExp('\\+','g'),'%2B');
-	    return str.replace(new RegExp('%20','g'),'+');
-	}
-	var queryname = document.getElementById('inp').value;
-	var querynameurl = urlEncode(queryname);
-	var urls = {
-		'aladin' : 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+querynameurl,
-		'ridibooks' : 'http://ridibooks.com/search/?q='+queryname,
-		'userstorybook' : 'http://userstorybook.net/books/?keyword='+queryname
-	};
-	var sites_set = document.getElementsByName('sites_set');
+function function_send_to_server() {
 	
-	if (queryname && queryname!='검색어를 입력해주세요') {
-		for (var i = 0 ; i < sites_set.length ; i++) {
-			if (sites_set[i].checked){
-				window.open(urls[sites_set[i].value]);
-			}	
+	document.charset = "utf-8";
+	var queryname_raw = document.getElementById('inp').value;
+	
+	var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://elecuchi.cafe24.com/program/checkcheck/responser.php');
+    xhr.onreadystatechange = function(){    
+		if (xhr.readyState === 4 && xhr.status === 200) {
+		    var queryname = xhr.responseText;
+		    alert ('통신성공함 값을 받아왔다면 그값은['+queryname+']');
+		    function_find(queryname);
 		}
-		function_frame_remove();
-	} else {
-		input_box.setAttribute('value','검색어를 입력해주세요');
+    };
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	var data = 'dataname=' + queryname_raw;
+    xhr.send(data);
+    alert ('보냈어'+data);
+
+	function function_find(queryname){
+		alert('펑션파인드를 실행했다');
+		var queryname_aladin = urlEncode(queryname_raw);
+		function urlEncode(str){
+		    str = escape(str);
+		    str = str.replace(new RegExp('\\+','g'),'%2B');
+		    return str.replace(new RegExp('%20','g'),'+');
+		}
+		var urls = {
+			'aladin' : 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+queryname_aladin,
+			'ridibooks' : 'http://ridibooks.com/search/?q='+queryname,
+			'userstorybook' : 'http://userstorybook.net/books/?keyword='+queryname
+		};
+		var sites_set = document.getElementsByName('sites_set');
+		if (queryname) {
+			for (var i = 0 ; i < sites_set.length ; i++) {
+				if (sites_set[i].checked){
+					window.open(urls[sites_set[i].value]);
+				}	
+			}
+			function_frame_remove();
+		}
 	}
 }
 
 function function_by_keyboard(event){
 	if (event.keyCode == 13) {
-		function_find();
+		function_send_to_server();
 	} else if (event.keyCode == 27){
 		function_frame_remove();
 	}
 }
-
-
-
 
 if( ! document.getElementById('checkcheckframe') ){
 	document.getElementsByTagName('body')[0].appendChild(frame);
