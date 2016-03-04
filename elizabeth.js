@@ -41,6 +41,10 @@ for (var i = 0 ; i < sites.length ; i++) {
 var form = document.createElement('form');
 form.style.margin = '10px 0 0 0';
 form.setAttribute('accept-charset','UTF-8');
+form.setAttribute('action','http://elecuchi.cafe24.com/program/checkcheck/responser.php');
+form.setAttribute('method','post');
+form.setAttribute('taret','_blank');
+form.id = 'fo';
 
 var guide = document.createElement('span');
 guide.innerHTML = '제목이나 저자';
@@ -95,8 +99,11 @@ function function_send_to_server() {
 	document.charset = "utf-8";
 	var queryname_raw = document.getElementById('inp').value;
 
+	var form_action = document.getElementById('fo').getAttribute('action');
+	var form_method = document.getElementById('fo').getAttribute('method');
+
 	var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://elecuchi.cafe24.com/program/checkcheck/responser.php');
+    xhr.open(form_method, form_action);
     xhr.onreadystatechange = function(){    
 		if (xhr.readyState === 4 && xhr.status === 200) {
 		    var queryname = xhr.responseText;
