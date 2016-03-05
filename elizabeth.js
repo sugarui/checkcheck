@@ -43,7 +43,7 @@ form.style.margin = '10px 0 0 0';
 form.setAttribute('accept-charset','UTF-8');
 form.setAttribute('action','http://elecuchi.cafe24.com/program/checkcheck/responser.php');
 form.setAttribute('method','post');
-form.setAttribute('taret','_blank');
+form.setAttribute('target','_blank');
 form.id = 'fo';
 
 var guide = document.createElement('span');
@@ -86,68 +86,10 @@ form.appendChild(button_find);
 form.appendChild(button_close);
 form.appendChild(feedback);
 
-button_find.addEventListener('click', function_send_to_server);
 button_close.addEventListener('click', function_frame_remove);
-frame.addEventListener('keydown', function_by_keyboard);
 
 function function_frame_remove() {
 	document.getElementsByTagName('body')[0].removeChild(frame);
-}
-
-function function_send_to_server() {
-
-	document.charset = "utf-8";
-	var queryname_raw = document.getElementById('inp').value;
-
-	var form_action = document.getElementById('fo').getAttribute('action');
-	var form_method = document.getElementById('fo').getAttribute('method');
-
-	var xhr = new XMLHttpRequest();
-    xhr.open(form_method, form_action);
-    xhr.onreadystatechange = function(){    
-		if (xhr.readyState === 4 && xhr.status === 200) {
-		    var queryname = xhr.responseText;
-		    alert ('통신성공함. 값을 받아왔다면 그값은['+queryname+']');
-		    function_find(queryname);
-		}
-    };
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	var data = 'dataname=' + queryname_raw;
-    xhr.send(data);
-    alert ('보냈어'+data);
-
-	function function_find(queryname){
-		alert('펑션파인드를 실행했다');
-		var queryname_aladin = urlEncode(queryname_raw);
-		function urlEncode(str){
-		    str = escape(str);
-		    str = str.replace(new RegExp('\\+','g'),'%2B');
-		    return str.replace(new RegExp('%20','g'),'+');
-		}
-		
-		var urls = {
-			'aladin' : 'http://www.aladin.co.kr/search/wsearchresult.aspx?SearchTarget=All&SearchWord='+queryname_aladin,
-			'ridibooks' : 'http://ridibooks.com/search/?q='+queryname,
-			'userstorybook' : 'http://userstorybook.net/books/?keyword='+queryname
-		};
-		var sites_set = document.getElementsByName('sites_set');
-		if (queryname) {
-			for (var i = 0 ; i < sites_set.length ; i++) {
-				if (sites_set[i].checked){
-					window.open(urls[sites_set[i].value]);
-				}	
-			}
-			function_frame_remove();
-		}
-	}
-}
-
-function function_by_keyboard(event){
-	if (event.keyCode == 13) {
-		function_send_to_server();
-	} else if (event.keyCode == 27){
-		function_frame_remove();
-	}
 }
 
 if( ! document.getElementById('checkcheckframe') ){
