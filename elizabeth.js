@@ -54,6 +54,7 @@ guide.style.fontWeight = 'bold';
 
 var input_box = document.createElement('input');
 input_box.setAttribute('type','text');
+input_box.setAttribute('name','dataname');
 input_box.setAttribute('autofocus','autofocus');
 input_box.setAttribute('value',window_selection);
 input_box.id = 'inp';
