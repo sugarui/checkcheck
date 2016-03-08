@@ -1,5 +1,8 @@
 # referece file
 reference/*
 
+# helper file
+helper/*
+
 #design file
 design_psd/*
