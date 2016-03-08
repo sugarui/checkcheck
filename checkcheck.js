@@ -19,11 +19,21 @@ if(window.getSelection){
     var window_selection=window.getSelection();
 }
 
+var form = document.createElement('form');
+form.style.margin = '10px 0 0 0';
+form.setAttribute('accept-charset','utf-8');
+form.setAttribute('action','http://elecuchi.cafe24.com/program/checkcheck/responser.php');
+form.setAttribute('method','post');
+form.setAttribute('target','_blank');
+form.id = 'fo';
+
+frame_inner.appendChild(form);
+
 var sites = ['aladin','ridibooks'];
 for (var i = 0 ; i < sites.length ; i++) {
 	var checkbox = document.createElement('input');
 	checkbox.setAttribute('type','checkbox');
-	checkbox.setAttribute('name','sites_set');
+	checkbox.setAttribute('name','name_checked');
 	checkbox.setAttribute('value',sites[i]);
 	checkbox.setAttribute('checked','checked');
 	checkbox.style.margin = '0 3px 0 0';
@@ -34,19 +44,11 @@ for (var i = 0 ; i < sites.length ; i++) {
 	label.style.color = '#3b99fc';
 	label.style.fontSize= 'small';
 
-	frame_inner.appendChild(checkbox);
-	frame_inner.appendChild(label);
+	form.appendChild(checkbox);
+	form.appendChild(label);
 }
 
-var form = document.createElement('form');
-form.style.margin = '10px 0 0 0';
-form.setAttribute('accept-charset','UTF-8');
-form.setAttribute('action','http://elecuchi.cafe24.com/program/checkcheck/responser.php');
-form.setAttribute('method','post');
-form.setAttribute('target','_blank');
-form.id = 'fo';
-
-var guide = document.createElement('span');
+var guide = document.createElement('span'); 
 guide.innerHTML = '제목이나 저자';
 guide.style.margin = '0 8px 0 0';
 guide.style.color = '#444';
@@ -54,7 +56,7 @@ guide.style.fontWeight = 'bold';
 
 var input_box = document.createElement('input');
 input_box.setAttribute('type','text');
-input_box.setAttribute('name','dataname');
+input_box.setAttribute('name','name_typed');
 input_box.setAttribute('autofocus','autofocus');
 input_box.setAttribute('value',window_selection);
 input_box.id = 'inp';
@@ -80,7 +82,6 @@ feedback.style.margin = '0 0 0 10px';
 feedback.style.color = '#9cc0e6';
 feedback.style.fontWeight = 'bold';
 
-frame_inner.appendChild(form);
 form.appendChild(guide);
 form.appendChild(input_box);
 form.appendChild(button_find);
