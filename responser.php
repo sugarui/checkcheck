@@ -6,7 +6,6 @@
   <!--<meta charset="euc-kr">-->
 </head>
 <body>
-	<div>hello world!</div>
 
 	<?php 
 
@@ -15,22 +14,19 @@
 		//header("Content-Type: text/html; charset=euc-kr");
 		//header("Content-Type: text/html; charset=UTF-8");
 
-		//받아온 값
+		//받아온 검색어 & 이를 화면에 표시하기
 		$name_typed = $_POST['name_typed'];
-		$name_checked_0 = $_POST['name_checked_0'];
-		$name_checked_1 = $_POST['name_checked_1'];
+		echo "인코딩을 디텍팅한 결과는 [".mb_detect_encoding($name_typed)."]이다";
+		echo "<div id='name_typed'>인코딩되어 수신된 데이터는 [".$name_typed."]이다</div>";
 
-		//컨버팅 함수
-		//그러나 form측에서 utf-8로 전송한 것을 받아오는 것이 전체적인 구조이므로, 사실 이 컨버팅은 필요하지 않다 
-		//$name_typed = iconv("euc-kr", "UTF-8", $name_typed); //http://bomool.net/bbs/board.php?bo_table=bo0102&wr_id=10
 
-		//받아온 값을 확인하기
-		echo '인코딩을 디텍팅한 값은['.mb_detect_encoding($name_typed).']이다';
-
-		//받은 데이터를 화면에 표시
-		echo "<div id='name_typed'>".$name_typed."</div>";
-		echo "<div class='name_checked'>".$name_checked_0."</div>";
-		echo "<div class='name_checked'>".$name_checked_1."</div>";
+		//받아온 사이트 체크박스 목록 & 이를 화면에 표시하기 
+		//여기서 반복문 제어숫자(가운데)는 checkcheck.js에서 선언된 var sites 배열의 원소 갯수와 같게 할 것 		
+		for($i = 0; $i < 2; $i++){ 
+			$name_checked = $_POST['name_checked_'.$i];
+			echo "<div class='name_checked'>".$name_checked."</div>";
+		}
+		
 	?>
 
 	<script type="text/javascript">
