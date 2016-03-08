@@ -2,7 +2,8 @@
 <html>
 <head>
   <title></title>
-  <meta charset="utf-8">
+  <!--<meta charset="utf-8">-->
+  <!--<meta charset="euc-kr">-->
 </head>
 <body>
 	<div>hello world!</div>
@@ -11,7 +12,7 @@
 
 		//다양한 사이트에서 접속 허용
 		header("Access-Control-Allow-Origin:*");
-		
+		//header("Content-Type: text/html; charset=euc-kr");
 		//header("Content-Type: text/html; charset=UTF-8");
 
 		//받아온 값
@@ -25,7 +26,7 @@
 		echo '인코딩을 디텍팅한 값은['.mb_detect_encoding($data).']이다';
 
 		//받은 데이터를 화면에 표시
-		echo "<div id='datadiv'>디아이".$data."</div>";
+		echo "<div id='datadiv'>".$data."</div>";
 
 	?>
 
