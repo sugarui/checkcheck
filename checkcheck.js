@@ -99,3 +99,4 @@ if( ! document.getElementById('checkcheckframe') ){
 } else {
 	alert ('이미 책첵을 켰어요! 화면 우측 상단을 보세요 ↗↗');
 }
+// 브랜치 분기 성공여부 테스트용 주석 추가 - 마스터 브랜치
